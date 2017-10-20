@@ -8,9 +8,17 @@ var omdb = require('omdb');
 var request = require('request');
 var fs = require('fs');
 
+if(x === 'my-tweets') {
 
-// stuff will happen
-//.
-//..
-//...
-//...eventually
+}
+if(x === 'spotifiy-this-song') {
+
+}
+if(x === 'movie-this') {
+
+}
+if(x === 'do-what-it-says') {
+    
+}
+
+// more to come
