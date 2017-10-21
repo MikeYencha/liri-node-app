@@ -1,4 +1,5 @@
-var keys = require('twitterKeys');
+var keys = require('./keys.js');
+var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
 var spotify = new Spotify({
     id: 'd9d598f3e33244f5ad0e1d08d4439bf4',
@@ -38,8 +39,9 @@ switch(arg) {
 //Here is where i'm trying to figure out my 'myTweets()' function
 
 function myTweets() {
+  var client = keys.twitterKeys;
   var params = {screen_name: 'MikeyDoughnuts'};
-  keys.get('statuses/user_timeline', params, function(error, tweets, response) {
+  client.get('statuses/user_timeline', params, function(error, tweets, response) {
     if (!error) {
       console.log(tweets);
     } else {
