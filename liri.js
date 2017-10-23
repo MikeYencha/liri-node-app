@@ -32,36 +32,22 @@ switch(arg) {
     break;
 }
 
-//Here is where i'm trying to figure out my 'myTweets()' function
-
-  // function myTweets() {
-  //   console.log('This is where a Tweet should go')
-  // }
-
 function myTweets() {
 
   var client = new Twitter(keys.twitterKeys);
   var params = {screen_name: 'MikeyDoughnuts'};
   client.get('statuses/user_timeline', params, function(error, tweets, response) {
     if (!error) {
-      console.log(JSON.stringify(tweets,null,2));
-      
+      // console.log(JSON.stringify(tweets[0].text,null,2));
+      //i will have to iterate from the value above so I can output to the command line
+      for(var i = 0; i < tweets.length; i++) {
+        console.log(tweets[i].text);
+      }
+    } else {
+      console.log(error);
     }
   });
-  // var params = {
-  //   screen_name: 'MikeyDoughnuts'
-  // };
-  // client.get('search/tweets', {
-  //   q: 'MikeyDoughnuts'
-  // }, function (error, tweets, response) {
-  //   if (error) {
-  //     console.log(error);
-  //   } else {
-  //     console.log(tweets);
-  //   }
-  // })
 }
-
 
 //Here is where my 'spotifySong()' will be defined
 
@@ -73,10 +59,10 @@ function spotifySong() {
     var spotClient = new Spotify(keys.spotify);
     var song = process.argv[3];
     spotClient.search({ type: 'track', query: song }, function(err, data) {
-      if (err) {
-        return console.log('Error occurred: ' + err);
+      if (!err) {
+        console.log(JSON.stringify(data,null,2));
       } else {
-    console.log(JSON.stringify(data,null,2)); 
+        return console.log(err);m
     }
   })
 }
