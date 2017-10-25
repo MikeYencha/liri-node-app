@@ -58,12 +58,13 @@ function myTweets() {
 function spotifySong() {
     var spotClient = new Spotify(keys.spotify);
     var song = process.argv[3];
-    spotClient.search({ type: 'track', query: song }, function(err, data) {
+    spotClient.search({ type: 'track', query: song, limit: 1 }, function(err, data) {
       if (!err) {
-        console.log(JSON.stringify(data,null,2));
+        // console.log(JSON.stringify(data,null,2));
+        console.log(data.tracks.items[0].album.artists[0]);
       } else {
-        return console.log(err);m
-    }
+        return console.log(err);
+      }
   })
 }
 
