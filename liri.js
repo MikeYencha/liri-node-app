@@ -57,11 +57,15 @@ function myTweets() {
 
 function spotifySong() {
     var spotClient = new Spotify(keys.spotify);
-    var song = process.argv[3];
+
+    var song = process.argv.slice(3).join('-');
+    console.log('song ....', song)
     spotClient.search({ type: 'track', query: song, limit: 1 }, function(err, data) {
       if (!err) {
         // console.log(JSON.stringify(data,null,2));
-        console.log(data.tracks.items[0].album.artists[0]);
+        var artist = data.tracks.items[0].album.artists[0].name
+        console.log(artist);
+        console.log(JSON.stringify(data.tracks.items[0],null,2));
       } else {
         return console.log(err);
       }
