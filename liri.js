@@ -13,11 +13,11 @@ var fs = require('fs');
 var arg = process.argv[2];
 switch(arg) {
   case 'my-tweets':
-    console.log('myTweets();');
+    // console.log('myTweets();');
     myTweets();
     break;
   case 'spotify-this-song':
-    console.log('spotifySong();');
+    // console.log('spotifySong();');
     spotifySong();
     break;
   case 'movie-this':
