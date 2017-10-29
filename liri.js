@@ -51,10 +51,6 @@ function myTweets() {
 
 //Here is where my 'spotifySong()' will be defined
 
-// function spotifySong() {
-//   console.log('This is where song information should go')
-// }
-
 function spotifySong() {
     var spotClient = new Spotify(keys.spotify);
 
@@ -63,9 +59,14 @@ function spotifySong() {
     spotClient.search({ type: 'track', query: song, limit: 1 }, function(err, data) {
       if (!err) {
         // console.log(JSON.stringify(data,null,2));
-        var artist = data.tracks.items[0].album.artists[0].name
-        console.log(artist);
-        console.log(JSON.stringify(data.tracks.items[0],null,2));
+        // console.log(JSON.stringify(data.tracks.items[0],null,2));
+
+        var artist = (data.tracks.items[0].album.artists[0].name);
+        var album = (data.tracks.items[0].album.name);
+        var preview = (data.tracks.items[0].external_urls.spotify);
+        console.log('"' + song + '"' + ' was performed by ' + artist);
+        console.log(song + ' was featured on the album ' + album);
+        console.log('You can listen to ' + song + ' by clicking on the following ' + preview);
       } else {
         return console.log(err);
       }
